@@ -18,5 +18,5 @@ from django.urls import path
 from weather.views import weather
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('weather/', weather),
+    path('', weather),
 ]

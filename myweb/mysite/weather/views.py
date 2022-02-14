@@ -77,7 +77,7 @@ def weather(request):
             return render(request, 'weather.html',
                           {'tem': df, 'tablename': tablename, 'month1': month1, 'month2': month2, 'month3': month3})
         else:
-            return HttpResponseRedirect('/weather/')  # 若未確實選擇三個月份則會跳轉回weather.html, 避免error
+            return HttpResponseRedirect('/')  # 若未確實選擇三個月份則會跳轉回weather.html, 避免error
     else:
         df_tem = TaiwanTem.objects.all()  # 預設顯示
         return render(request, 'weather.html', {'tem': df_tem})
