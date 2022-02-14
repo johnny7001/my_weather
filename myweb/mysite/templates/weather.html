@@ -72,18 +72,18 @@
         <input type="submit" value="查詢">
     </form>
 <hr>
-<p>目前選擇的是: {% if tablename == "氣溫" %}
-                <b><font style="color:blue;">{{ tablename }}</font></b>
+<p><font face="微軟正黑體" size="5">目前選擇的是:</font> {% if tablename == "氣溫" %}
+                <b><font face="微軟正黑體" size="5" style="color:blue;">{{ tablename }}</font></b>
                {% elif tablename == "最高氣溫" %}
-                <b><font style="color:red;">{{ tablename }}</font></b>
+                <b><font face="微軟正黑體" size="5" style="color:red;">{{ tablename }}</font></b>
                {% elif tablename is None %}
-                <b><font style="color:blue;">氣溫</font></b>
+                <b><font face="微軟正黑體" size="5" style="color:blue;">氣溫</font></b>
                {% endif %}
                <p></p>
                {% if month1 == '請選擇...' %}
-                        請確實選擇3個月份，且勿重複選擇同樣的月份
+                        <font face="微軟正黑體" size="5">請確實選擇3個月份，且勿重複選擇同樣的月份，若要查看全部月份，則不用選擇</font>
                {% else %}
-                        {{ month1 }}月份平均溫度 = {{ month1_avg }}, {{ month2 }}月份平均溫度 = {{ month2_avg }}, {{ month3 }}月份平均溫度 = {{ month3_avg }}
+    <font face="微軟正黑體" size="5">{{ month1 }}月平均溫度 = {{ month1_avg }}，{{ month2 }}月平均溫度 = {{ month2_avg }}，{{ month3 }}月平均溫度 = {{ month3_avg }}</font>
                {% endif %}
                <p></p>
 <div style="display:block;float:left;">
