@@ -30,7 +30,7 @@ def conn_mysql(sql): #建立mysql連線並執行sql指令
 
 def alter_column(): #新增id欄位, #修改欄位型態
 #新增id欄位
-    sql_id = "alter table taiwan_high add column id int not null auto_increment primary key first;"
+    sql_id = "alter table taiwan_high add id int not null auto_increment primary key first;"
     conn_mysql(sql_id)
 #修改欄位型態
     month_col = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aus', 'Sep', 'Oct', 'Nov', 'Dece', 'Avg']

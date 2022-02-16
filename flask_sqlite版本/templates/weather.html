@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hello, Bootstrap Table!</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+  </head>
+
+<body>
+    <h2>擷取下拉選單「臺灣」及「氣溫」、「最高氣溫」的表格資料</h2>
+    <p></p>
+    <h3>條件指定任三個月的資料</h3>
+    <p></p>
+    <form action="/" method="get">
+        <select id="sel_table" name="sel_table">
+            <option value="氣溫">氣溫</option>
+            <option value="最高氣溫">最高氣溫</option>
+        </select>
+
+        <select id="sel_month1" name="sel_month1">
+            <option>請選擇...</option>
+            <option value="jan">一月</option>
+            <option value="feb">二月</option>
+            <option value="mar">三月</option>
+            <option value="apr">四月</option>
+            <option value="may">五月</option>
+            <option value="jun">六月</option>
+            <option value="jul">七月</option>
+            <option value="aus">八月</option>
+            <option value="sep">九月</option>
+            <option value="oct">十月</option>
+            <option value="nov">十一月</option>
+            <option value="dece">十二月</option>
+        </select>
+
+          <select id="sel_month2" name="sel_month2">
+              <option>請選擇...</option>
+            <option value="jan">一月</option>
+            <option value="feb">二月</option>
+            <option value="mar">三月</option>
+            <option value="apr">四月</option>
+            <option value="may">五月</option>
+            <option value="jun">六月</option>
+            <option value="jul">七月</option>
+            <option value="aus">八月</option>
+            <option value="sep">九月</option>
+            <option value="oct">十月</option>
+            <option value="nov">十一月</option>
+            <option value="dece">十二月</option>
+        </select>
+
+        <select id="sel_month3" name="sel_month3">
+            <option>請選擇...</option>
+            <option value="jan">一月</option>
+            <option value="feb">二月</option>
+            <option value="mar">三月</option>
+            <option value="apr">四月</option>
+            <option value="may">五月</option>
+            <option value="jun">六月</option>
+            <option value="jul">七月</option>
+            <option value="aus">八月</option>
+            <option value="sep">九月</option>
+            <option value="oct">十月</option>
+            <option value="nov">十一月</option>
+            <option value="dece">十二月</option>
+        </select>
+        <input type="submit" value="查詢">
+    </form>
+<hr>
+<p><font face="微軟正黑體" size="5">目前選擇的是:
+      </font> 
+      {% if get_tablenme == "氣溫" %}
+          <b><font face="微軟正黑體" size="5" style="color:blue;">{{ get_tablenme }}</font></b>
+      {% elif get_tablenme == "最高氣溫" %}
+          <b><font face="微軟正黑體" size="5" style="color:red;">{{ get_tablenme }}</font></b>
+      {% else %}
+          <b><font face="微軟正黑體" size="5" style="color:blue;">氣溫</font></b>
+      {% endif %}
+<p></p>
+
+     {% if get_month1 == '請選擇...' %}
+              <font face="微軟正黑體" size="5">請確實選擇3個月份，且勿重複選擇同樣的月份，若要查看全部月份，則不用選擇</font>
+     {% else %}
+              <font face="微軟正黑體" size="5">{{ get_month1 }}月平均溫度 = {{ month1_v1 }}，{{ get_month2 }}月平均溫度 = {{ month2_v2 }}，{{ get_month3 }}月平均溫度 = {{ month3_v3 }}</font>
+     {% endif %}
+     <p></p>
+<div style="display:block;float:left;">
+        <table data-toggle="table" align="left">
+          <thead>
+            <tr role="row">
+              <th>地點</th>
+              <th>一月</th>
+              <th>二月</th>
+              <th>三月</th>
+              <th>四月</th>
+              <th>五月</th>
+              <th>六月</th>
+              <th>七月</th>
+              <th>八月</th>
+              <th>九月</th>
+              <th>十月</th>
+              <th>十一月</th>
+              <th>十二月</th>
+              <th>平均溫度</th>
+              <th>統計期間</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          {% for r in rows %}
+            <tr>
+              <td>{{ r["city"] }}</td>
+              <td>{{ r["jan"] }}</td>
+              <td>{{ r["feb"] }}</td>
+              <td>{{ r["mar"] }}</td>
+              <td>{{ r["apr"] }}</td>
+              <td>{{ r["may"] }}</td>
+              <td>{{ r["jun"] }}</td>
+              <td>{{ r["jul"] }}</td>
+              <td>{{ r["aus"] }}</td>
+              <td>{{ r["sep"] }}</td>
+              <td>{{ r["oct"] }}</td>
+              <td>{{ r["nov"] }}</td>
+              <td>{{ r["dece"] }}</td>
+              <td>{{ r["avg"] }}</td>
+              <td>{{ r["sta_period"] }}</td>
+            </tr>
+
+          {% endfor %}
+          </tbody>
+        </table>
+</div>
+
+<div style="display:block;float:left;">
+        <table data-toggle="table" align="left">
+          <thead>
+            <tr role="row">
+              <th>任選三個月平均</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for i in m_list %}
+          <tr>
+              <td>{{ i }}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+</body>
+</html>
+
