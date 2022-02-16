@@ -9,6 +9,7 @@ from django.db.models import Q #多條件查詢
 def weather(request):
     if 'sel_table' in request.GET:
         tablename = request.GET['sel_table'] # 抓取下拉選單的值, type = string
+
         # 任選三個月的資料
         month1 = request.GET['sel_month1']
         month2 = request.GET['sel_month2']
