@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import pandas as pd
 import time
-from B_插入所有表格(非測驗題) import insert_csv, alter_column
+from B_insertAllTable import insert_csv, alter_column
 url = 'https://www.cwb.gov.tw/V8/C/C/Statistics/monthlymean.html'
 opt = webdriver.ChromeOptions()
 user_agent = 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Mobile Safari/537.36'
